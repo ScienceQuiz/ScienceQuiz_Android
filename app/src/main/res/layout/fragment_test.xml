@@ -37,9 +37,11 @@
         android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:layout_margin="16dp"
         android:gravity="center"
         android:text="question"
-        android:textColor="#FFFFFF"
+        android:background="@drawable/question_text_view"
+        android:textColor="#000"
         android:textSize="18sp"
         android:textStyle="bold" />
 
