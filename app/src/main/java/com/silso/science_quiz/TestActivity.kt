@@ -10,7 +10,7 @@ class TestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_test)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.mainFragment, Question())
+            .replace(R.id.fragment, Question())
             .commit()
     }
 }
