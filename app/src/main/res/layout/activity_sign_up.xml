@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:backgroundTint="#DDDCDC"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,7 +35,7 @@
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.942" />
+                app:layout_constraintVertical_bias="0.711" />
 
             <Button
                 android:id="@+id/button"
@@ -54,7 +54,7 @@
                 android:id="@+id/signup_id"
                 android:layout_width="300dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="144dp"
+                android:layout_marginTop="136dp"
                 android:hint="enter your id"
                 app:layout_constraintBottom_toTopOf="@+id/signin_password"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
                 android:id="@+id/signup_password"
                 android:layout_width="300dp"
                 android:layout_height="70dp"
-                android:layout_marginBottom="120dp"
+                android:layout_marginBottom="124dp"
                 android:hint="enter your password"
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toTopOf="@+id/button"
@@ -79,7 +79,7 @@
                 android:id="@+id/signup_password_check"
                 android:layout_width="300dp"
                 android:layout_height="70dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="28dp"
                 android:hint="check your password"
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toTopOf="@+id/button"
