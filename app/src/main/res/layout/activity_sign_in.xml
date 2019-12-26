@@ -155,7 +155,7 @@
         android:layout_height="wrap_content"
         android:text="SignIn"
         android:textColor="#ffffff"
-        android:textSize="60sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/signin_cardView"
         app:layout_constraintEnd_toEndOf="parent"
