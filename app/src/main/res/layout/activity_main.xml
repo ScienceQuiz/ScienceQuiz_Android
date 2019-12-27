@@ -182,14 +182,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.2" />
+            app:layout_constraintGuide_percent="0.22" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.13" />
+            app:layout_constraintGuide_percent="0.15" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline11"
@@ -290,7 +290,7 @@
             android:text="1000"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
+            app:layout_constraintBottom_toTopOf="@+id/start_quiz_btn"
             app:layout_constraintEnd_toStartOf="@+id/guideline14"
             app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="@+id/guideline15"
@@ -322,7 +322,9 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline22"
             app:layout_constraintEnd_toStartOf="@+id/guideline14"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline11" />
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline9"
+            app:layout_constraintVertical_bias="0.967" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline22"
