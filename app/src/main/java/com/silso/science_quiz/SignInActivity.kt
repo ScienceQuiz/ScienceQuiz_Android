@@ -15,7 +15,7 @@ class SignInActivity : AppCompatActivity() {
             startActivity<SignUpActivity>()
         }
 
-        signin_btn.setOnClickListener {
+        signin_complete_btn.setOnClickListener {
             startActivity<MainActivity>()
             finish()
         }
