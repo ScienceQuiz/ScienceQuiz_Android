@@ -170,7 +170,7 @@
             android:gravity="center"
             android:text="닉네임"
             android:textColor="#1684EF"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -220,7 +220,7 @@
             app:layout_constraintVertical_bias="0.48" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/rank_school_image"
             android:layout_width="80dp"
             android:layout_height="90dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline8"
@@ -241,7 +241,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline12"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="@+id/guideline11"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/rank_school_image"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -255,7 +255,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline12"
             app:layout_constraintHorizontal_bias="0.11"
             app:layout_constraintStart_toEndOf="@+id/grade_of_school"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/rank_school_image"
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.Guideline

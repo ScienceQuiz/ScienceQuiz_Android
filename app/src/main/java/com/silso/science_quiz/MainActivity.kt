@@ -14,5 +14,8 @@ class MainActivity : AppCompatActivity() {
         start_quiz_btn.setOnClickListener {
             startActivity<TestActivity>()
         }
+        rank_school_image.setOnClickListener {
+            startActivity<RankActivity>()
+        }
     }
 }
