@@ -7,13 +7,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/quiz_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Ui.activity.RankActivity"></activity>
+        <activity android:name=".Ui.activity.RankActivity"/>
         <activity android:name=".Ui.activity.SignUpActivity" />
         <activity android:name=".Ui.activity.SignInActivity">
             <intent-filter>
@@ -22,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Ui.activity.MainActivity"></activity>
+        <activity android:name=".Ui.activity.MainActivity"/>
         <activity android:name=".Ui.activity.ResultActivity" />
         <activity android:name=".Ui.activity.TestActivity" />
     </application>
