@@ -1,10 +1,12 @@
-package com.silso.science_quiz
+package com.silso.science_quiz.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.silso.science_quiz.R
+import com.silso.science_quiz.data.RankUser
 
 class RankAdapter:RecyclerView.Adapter<RankAdapter.Holder>() {
     private val rankList = ArrayList<RankUser>()
@@ -20,7 +22,7 @@ class RankAdapter:RecyclerView.Adapter<RankAdapter.Holder>() {
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.connect(rankList[position])
     }
-    fun add(data:RankUser){
+    fun add(data: RankUser){
         rankList.add(data)
         notifyDataSetChanged()
     }
@@ -28,7 +30,7 @@ class RankAdapter:RecyclerView.Adapter<RankAdapter.Holder>() {
         private val userNick =itemView.findViewById<TextView>(R.id.rank_nick)
         private val userScore = itemView.findViewById<TextView>(R.id.rank_score)
 
-        fun connect(data:RankUser){
+        fun connect(data: RankUser){
             userNick.text = data.userNick
             userScore.text = data.userScore
         }

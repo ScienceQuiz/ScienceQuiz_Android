@@ -1,4 +1,4 @@
-package com.silso.science_quiz
+package com.silso.science_quiz.server
 
 interface NetRetrofit {
 

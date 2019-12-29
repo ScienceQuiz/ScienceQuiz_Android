@@ -1,4 +1,4 @@
-package com.silso.science_quiz
+package com.silso.science_quiz.server
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
