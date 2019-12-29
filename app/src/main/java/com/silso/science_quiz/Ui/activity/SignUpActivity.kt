@@ -1,7 +1,8 @@
-package com.silso.science_quiz
+package com.silso.science_quiz.Ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.silso.science_quiz.R
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {

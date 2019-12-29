@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#444444"
-    tools:context=".SignInActivity">
+    tools:context=".Ui.activity.SignInActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/signin_cardView"
