@@ -41,16 +41,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rank_image" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rank_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
+            android:layout_margin="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rank_school_text"
-            tools:listitem="@layout/item_ranking"/>
+            app:layout_constraintVertical_bias="0.187"
+            tools:listitem="@layout/item_ranking" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

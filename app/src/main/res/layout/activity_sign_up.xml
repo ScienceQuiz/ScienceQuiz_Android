@@ -11,7 +11,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/signin_cardView"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="600dp"
         android:backgroundTint="#DDDCDC"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
