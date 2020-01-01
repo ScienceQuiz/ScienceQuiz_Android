@@ -33,18 +33,16 @@ class TestActivity : AppCompatActivity() {
     }
 
     fun startTransaction(){
-        supportFragmentManager.beginTransaction()
-            .replace(
+        supportFragmentManager.beginTransaction().apply {
+            replace(
                 R.id.question_fragment,
                 questFragObj
             )
-            .commit()
 
-        supportFragmentManager.beginTransaction()
-            .replace(
+            replace(
                 R.id.btn_fragment,
                 soluFragObj
             )
-            .commit()
+        }.commit()
     }
 }
