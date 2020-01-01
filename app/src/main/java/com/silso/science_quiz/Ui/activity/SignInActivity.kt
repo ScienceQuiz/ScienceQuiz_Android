@@ -35,8 +35,10 @@ class SignInActivity : AppCompatActivity() {
         signin_complete_btn.setOnClickListener {
             if(isIdEmpty() && isPwEmpty()){
                 sendSignin()
+                finish()
+            }else{
+                toast("빈칸을 채워주시길 바랍니다.")
             }
-            finish()
         }
     }
 

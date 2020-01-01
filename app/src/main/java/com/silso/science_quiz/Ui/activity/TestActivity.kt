@@ -15,7 +15,6 @@ class TestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_test)
 
         setBundle()
-        startTransaction()
     }
 
     fun setBundle(){
@@ -30,6 +29,7 @@ class TestActivity : AppCompatActivity() {
 
         soluFragObj = Solution()
         soluFragObj.arguments = bundle1
+        startTransaction()
     }
 
     fun startTransaction(){
