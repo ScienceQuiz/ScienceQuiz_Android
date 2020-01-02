@@ -8,44 +8,38 @@ import com.google.android.material.snackbar.Snackbar
 import com.silso.science_quiz.R
 import com.silso.science_quiz.Ui.fragment.Question
 import com.silso.science_quiz.Ui.fragment.Solution
-import com.silso.science_quiz.data.TestData
+import com.silso.science_quiz.data.Science
 import com.silso.science_quiz.server.Retrofit
 import com.silso.science_quiz.util.SendAnswer
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
-import retrofit2.HttpException
 
 class TestActivity : AppCompatActivity(), SendAnswer {
-    lateinit var questFragObj: Question
-    lateinit var soluFragObj: Solution
-    lateinit var data: TestData
-    var count = 10
-    var correct = 0
+    private lateinit var questFragObj: Question
+    private lateinit var soluFragObj: Solution
+    private lateinit var data: Array<Science>
+    private lateinit var btns: Array<String>
+    private var count = 10
+    private var correct = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
-//        CoroutineScope(Dispatchers.Default).launch {
-//            val response = Retrofit().service.getData()
-//            withContext(Dispatchers.Main) {
-//                try {
-//                    if (response.isSuccessful) {
-                        turningTest()
-//                    } else {
-//                        Log.e("retroNo", response.code().toString())
-//                    }
-//                } catch (e: HttpException) {
-//                    Log.e("HttpE", "Exception ${e.message}")
-//                } catch (e: Throwable) {
-//                    Log.e("Throwable","Something else went wrong")
-//                }
-//            }
-//        }
+        GlobalScope.launch(Dispatchers.IO) {
+            val res = Retrofit().service.getSience()
+            Log.d("retrofit", res.code().toString())
+            if(res.isSuccessful) {
+                data = res.body()!!.science
+                turningTest()
+            }
+        }
     }
 
     //받은 데이터로 문제 표시
-    fun turningTest(){
+    private fun turningTest(){
         Log.e("count", count.toString())
         if(count == 0){
             startActivity<ResultActivity>(
@@ -55,21 +49,23 @@ class TestActivity : AppCompatActivity(), SendAnswer {
             finish()
         }else {
             count--
-            data = TestData("다음 중 1인 것을 고르시오", arrayOf("Первый", "Uno", "first", "첫번째"), 2)
+            data[10 - count].btns.apply {
+                btns = arrayOf(b1, b2, b3, b4)
+            }
             setBundle()
         }
     }
 
-    fun setBundle(){
+    private fun setBundle(){
         val bundle = Bundle()
-        bundle.putString("quest", data.quest)
+        bundle.putString("quest", data[11 - count].question)
 
         questFragObj = Question()
         questFragObj.arguments = bundle
 
         val bundle1 = Bundle().apply {
-            putStringArray("solution", data.btns)
-            putInt("key", data.key)
+            putStringArray("solution", btns)
+            putInt("key", data[10 - count].key)
         }
 
         soluFragObj = Solution()
@@ -77,7 +73,7 @@ class TestActivity : AppCompatActivity(), SendAnswer {
         startTransaction()
     }
 
-    fun startTransaction(){
+    private fun startTransaction(){
         supportFragmentManager.beginTransaction().apply {
             replace(
                 R.id.question_fragment,

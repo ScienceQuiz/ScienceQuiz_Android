@@ -1,8 +1,12 @@
 package com.silso.science_quiz.server
 
+import com.google.gson.JsonObject
+import com.silso.science_quiz.data.GetQusetion
 import com.silso.science_quiz.model.GetNick
 import com.silso.science_quiz.model.SignIn
+import kotlinx.coroutines.Deferred
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface NetRetrofit {
@@ -17,4 +21,7 @@ interface NetRetrofit {
 
     @GET("api/users/my")
     fun getNick(@Header("Authorization") token:String):Call<GetNick>
+
+    @GET("")
+    suspend fun getSience(): Response<GetQusetion>
 }
