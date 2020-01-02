@@ -2,11 +2,13 @@ package com.silso.science_quiz.Ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.silso.science_quiz.R
 import com.silso.science_quiz.Ui.fragment.Question
 import com.silso.science_quiz.Ui.fragment.Solution
+import com.silso.science_quiz.util.SendAnswer
 
-class TestActivity : AppCompatActivity() {
+class TestActivity : AppCompatActivity(), SendAnswer {
     lateinit var questFragObj: Question
     lateinit var soluFragObj: Solution
 
@@ -46,5 +48,9 @@ class TestActivity : AppCompatActivity() {
                 soluFragObj
             )
         }.commit()
+    }
+
+    override fun sendEvent(check: Boolean) {
+        Log.e("Успешно", check.toString())
     }
 }

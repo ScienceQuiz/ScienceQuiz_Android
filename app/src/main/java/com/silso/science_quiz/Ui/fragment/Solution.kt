@@ -1,6 +1,7 @@
 package com.silso.science_quiz.Ui.fragment
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,9 +10,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.silso.science_quiz.R
+import com.silso.science_quiz.util.SendAnswer
 
 class Solution: Fragment() {
     lateinit var btn: ArrayList<Button>
+    lateinit var sa: SendAnswer
     var key: Int = 0
     var choice: Int = 0
 
@@ -20,6 +23,7 @@ class Solution: Fragment() {
         val view = inflater.inflate(R.layout.fragment_solution, null)
         val bunArrStr = arguments?.getStringArray("solution")
         key = arguments?.getInt("key", 0)!!
+        sa = activity as SendAnswer
 
         btn = ArrayList<Button>().apply {
             add(view.findViewById(R.id.btn1))
@@ -45,8 +49,8 @@ class Solution: Fragment() {
 
     fun check(){
         when(choice){
-            key -> {Log.e("ㅁㅁㅁ", "yes")}
-            else -> {Log.e("ㅁㅁㅁ", "no")}
+            key -> {sa.sendEvent(true)}
+            else -> {sa.sendEvent(false)}
         }
     }
 }
