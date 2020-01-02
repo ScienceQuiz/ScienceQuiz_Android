@@ -6,6 +6,7 @@ import android.util.Log
 import com.silso.science_quiz.R
 import kotlinx.android.synthetic.main.activity_result.*
 import org.jetbrains.anko.image
+import org.jetbrains.anko.startActivity
 
 class ResultActivity : AppCompatActivity() {
     var reciece = 0
@@ -18,6 +19,14 @@ class ResultActivity : AppCompatActivity() {
 
         setScore()
         setImage()
+
+        resultRetry.setOnClickListener {
+            startActivity<TestActivity>()
+            finish()
+        }
+        resultHome.setOnClickListener {
+            finish()
+        }
     }
 
     fun setScore(){

@@ -53,6 +53,7 @@ class TestActivity : AppCompatActivity(), SendAnswer {
                 "correct" to correct,
                 "count" to 10
             )
+            finish()
         }else {
             count--
             data = TestData("다음 중 1인 것을 고르시오", arrayOf("Первый", "Uno", "first", "첫번째"), 2)
