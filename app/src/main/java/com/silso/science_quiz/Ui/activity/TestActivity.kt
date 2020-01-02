@@ -24,8 +24,10 @@ class TestActivity : AppCompatActivity() {
         questFragObj = Question()
         questFragObj.arguments = bundle
 
-        val bundle1 = Bundle()
-        bundle1.putStringArray("solution", arrayOf("one", "two", "three", "four"))
+        val bundle1 = Bundle().apply {
+            putStringArray("solution", arrayOf("one", "two", "three", "four"))
+            putInt("key", 1)
+        }
 
         soluFragObj = Solution()
         soluFragObj.arguments = bundle1

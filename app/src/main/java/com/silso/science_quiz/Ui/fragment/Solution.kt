@@ -12,11 +12,14 @@ import com.silso.science_quiz.R
 
 class Solution: Fragment() {
     lateinit var btn: ArrayList<Button>
+    var key: Int = 0
+    var choice: Int = 0
 
     @SuppressLint("InflateParams")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_solution, null)
         val bunArrStr = arguments?.getStringArray("solution")
+        key = arguments?.getInt("key", 0)!!
 
         btn = ArrayList<Button>().apply {
             add(view.findViewById(R.id.btn1))
@@ -32,20 +35,18 @@ class Solution: Fragment() {
     }
 
     fun BCE() {
-        btn[0].setOnClickListener {
-            Log.e("a", "1")
+        for(i in 0..3) {
+            btn[i].setOnClickListener {
+                choice = i + 1
+                check()
+            }
         }
+    }
 
-        btn[1].setOnClickListener {
-            Log.e("a", "2")
-        }
-
-        btn[2].setOnClickListener {
-            Log.e("a", "3")
-        }
-
-        btn[3].setOnClickListener {
-            Log.e("a", "4")
+    fun check(){
+        when(choice){
+            key -> {Log.e("ㅁㅁㅁ", "yes")}
+            else -> {Log.e("ㅁㅁㅁ", "no")}
         }
     }
 }
