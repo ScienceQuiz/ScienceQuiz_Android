@@ -11,11 +11,9 @@ import com.silso.science_quiz.Ui.fragment.Solution
 import com.silso.science_quiz.data.TestData
 import com.silso.science_quiz.server.Retrofit
 import com.silso.science_quiz.util.SendAnswer
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.joinAll
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.jetbrains.anko.startActivity
+import retrofit2.HttpException
 
 class TestActivity : AppCompatActivity(), SendAnswer {
     lateinit var questFragObj: Question
@@ -28,25 +26,26 @@ class TestActivity : AppCompatActivity(), SendAnswer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
-        //코루틴으로 서버로부터 데이터 받음
-        /*val scope = CoroutineScope(Dispatchers.Default)
-
-        scope.launch {
-            val call = Retrofit().service
-            val task1 = call.getDispatches(id, date, meal.first)
-            val task2 = call.getDispatches(id, date, meal.second)
-            val task3 = call.checkAppDetails()
-
-            joinAll(task1, task2, task3)
-
-            if (task1.isSuccessful && task2.isSuccessful && (task3.isSuccessful && task3.body().code == 1000)) {*/
-                recieveData()
-            //}
-        //}
+//        CoroutineScope(Dispatchers.Default).launch {
+//            val response = Retrofit().service.getData()
+//            withContext(Dispatchers.Main) {
+//                try {
+//                    if (response.isSuccessful) {
+                        turningTest()
+//                    } else {
+//                        Log.e("retroNo", response.code().toString())
+//                    }
+//                } catch (e: HttpException) {
+//                    Log.e("HttpE", "Exception ${e.message}")
+//                } catch (e: Throwable) {
+//                    Log.e("Throwable","Something else went wrong")
+//                }
+//            }
+//        }
     }
 
     //받은 데이터로 문제 표시
-    fun recieveData(){
+    fun turningTest(){
         Log.e("count", count.toString())
         if(count == 0){
             startActivity<ResultActivity>(
@@ -106,6 +105,6 @@ class TestActivity : AppCompatActivity(), SendAnswer {
             view.setBackgroundColor(Color.parseColor(sColor))
         }.show()
 
-        recieveData()
+        turningTest()
     }
 }
