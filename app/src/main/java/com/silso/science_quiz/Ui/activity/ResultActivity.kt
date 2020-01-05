@@ -1,8 +1,7 @@
 package com.silso.science_quiz.Ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.silso.science_quiz.R
 import kotlinx.android.synthetic.main.activity_result.*
 import org.jetbrains.anko.image
@@ -29,7 +28,7 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
-    fun setScore(){
+    private fun setScore(){
         reciece = intent.getIntExtra("correct", 0)
         count = intent.getIntExtra("count", 0)
 
@@ -39,7 +38,7 @@ class ResultActivity : AppCompatActivity() {
         resultScoreCnt.text = score.toString()
     }
 
-    fun setImage() {
+    private fun setImage() {
         resultImg.image = when {
             score >= count * 75 -> getDrawable(R.drawable.result_happy_face)
             score >= count * 40 -> getDrawable(R.drawable.result_ok_face)
