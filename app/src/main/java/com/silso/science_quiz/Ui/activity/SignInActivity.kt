@@ -79,14 +79,16 @@ class SignInActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<SignIn>, response: Response<SignIn>) {
-                if (response.code() == 200) {
-                    toast("로그인 성공")
-                    val jwt: String = response.body()!!.token
-                    UtilClass.saveToken(applicationContext, jwt)
-                    startActivity<MainActivity>()
+                when {
+                    response.code() == 200 -> {
+                        toast("로그인 성공")
+                        val jwt: String = response.body()!!.token
+                        UtilClass.saveToken(applicationContext, jwt)
+                        startActivity<MainActivity>()
+                    }
+                    response.code() == 471 -> toast("아이디 비밀번호가 일치하지 않습니다")
+                    response.code() == 470 -> toast("계정이 존재하지 않습니다.")
                 }
-                else if(response.code() == 471) toast("아이디 비밀번호가 일치하지 않습니다")
-                else if(response.code() == 470) toast("계정이 존재하지 않습니다.")
             }
 
         })

@@ -20,6 +20,6 @@ interface NetRetrofit {
     @GET("api/users/my")
     fun getNick(@Header("Authorization") token:String):Call<GetNick>
 
-    @GET("")
-    suspend fun getSience(): Response<GetQusetion>
+    @GET("/quiz")
+    suspend fun getScience(): Response<GetQusetion>
 }
