@@ -52,7 +52,7 @@ class TestActivity : AppCompatActivity(), SendAnswer {
     //받은 데이터로 문제 표시
     private fun turningTest(){
         Log.e("count", count.toString())
-        if(count == 0){
+        if(count == 1){
             startActivity<ResultActivity>(
                 "correct" to correct,
                 "count" to 10
