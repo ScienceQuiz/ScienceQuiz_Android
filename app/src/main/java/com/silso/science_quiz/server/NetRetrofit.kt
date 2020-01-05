@@ -17,9 +17,9 @@ interface NetRetrofit {
     @POST("/api/login")
     fun postSignin(@Body signIn: SignIn):Call<SignIn>
 
-    @GET("api/users/my")
+    @GET("/api/users/my")
     fun getNick(@Header("Authorization") token:String):Call<GetNick>
 
-    @GET("api/quiz")
-    suspend fun getSience(): Response<GetQusetion>
+    @GET("/api/quiz")
+    suspend fun getScience(): Response<GetQusetion>
 }

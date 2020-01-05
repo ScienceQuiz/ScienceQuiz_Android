@@ -15,6 +15,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import retrofit2.HttpException
 
 class TestActivity : AppCompatActivity(), SendAnswer {
     private lateinit var questFragObj: Question
@@ -29,11 +31,20 @@ class TestActivity : AppCompatActivity(), SendAnswer {
         setContentView(R.layout.activity_test)
 
         GlobalScope.launch(Dispatchers.IO) {
-            val res = Retrofit().service.getSience()
-            Log.d("retrofit", res.code().toString())
-            if(res.isSuccessful) {
-                data = res.body()!!.science
-                turningTest()
+            try {
+                val res = Retrofit().service.getScience()
+                Log.d("retrofit", res.code().toString())
+                Log.e("retrofit", res.message())
+                Log.e("retrofit", res.isSuccessful.toString())
+                Log.e("retrofit", res.body().toString())
+                if (res.isSuccessful) {
+                    data = res.body()!!.science
+                    turningTest()
+                }
+            }catch (e: HttpException) {
+                toast("Exception ${e.message}")
+            } catch (e: Throwable) {
+                toast("Ooops: Something else went wrong")
             }
         }
     }

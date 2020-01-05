@@ -1,12 +1,11 @@
 package com.silso.science_quiz.Ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.silso.science_quiz.R
 import com.silso.science_quiz.server.Retrofit
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import org.jetbrains.anko.startActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,7 +33,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun isPasswordEqual(): Boolean {
-        return signup_password.text.isNotEmpty() && signup_password_check.text.isNotEmpty() && signup_password_check.text == signup_password_check.text
+        return signup_password.text.isNotEmpty() && signup_password_check.text.isNotEmpty() && signup_password.text.toString() == signup_password_check.text.toString()
     }
 
     private fun isSchoolEmpty(): Boolean {
@@ -55,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 Log.d("signUp_response",response.code().toString())
                 if(response.code() == 201){
-                    startActivity<SignInActivity>()
+                    finish()
                 }
             }
 
