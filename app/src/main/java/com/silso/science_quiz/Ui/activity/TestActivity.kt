@@ -69,7 +69,7 @@ class TestActivity : AppCompatActivity(), SendAnswer {
 
     private fun setBundle(){
         val bundle = Bundle()
-        bundle.putString("quest", data[11 - count].question)
+        bundle.putString("quest", data[10 - count].question)
 
         questFragObj = Question()
         questFragObj.arguments = bundle
