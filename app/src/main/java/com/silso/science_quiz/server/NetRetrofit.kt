@@ -1,10 +1,8 @@
 package com.silso.science_quiz.server
 
-import com.google.gson.JsonObject
 import com.silso.science_quiz.data.GetQusetion
 import com.silso.science_quiz.model.GetNick
 import com.silso.science_quiz.model.SignIn
-import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
