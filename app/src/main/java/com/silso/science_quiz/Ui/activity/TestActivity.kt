@@ -11,6 +11,7 @@ import com.silso.science_quiz.Ui.fragment.Solution
 import com.silso.science_quiz.data.Science
 import com.silso.science_quiz.server.Retrofit
 import com.silso.science_quiz.util.SendAnswer
+import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class TestActivity : AppCompatActivity(), SendAnswer {
     private lateinit var soluFragObj: Solution
     private lateinit var data: Array<Science>
     private lateinit var btns: Array<String>
-    private var count = 10
+    private var count = 9
     private var correct = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,31 +53,33 @@ class TestActivity : AppCompatActivity(), SendAnswer {
     //받은 데이터로 문제 표시
     private fun turningTest(){
         Log.e("count", count.toString())
-        if(count == 1){
+        if(count == -1){
             startActivity<ResultActivity>(
                 "correct" to correct,
                 "count" to 10
             )
             finish()
         }else {
-            count--
-            data[10 - count].btns.apply {
+            corrctCount.text = correct.toString()
+            wrongCount.text = (10 - count - correct - 1).toString()
+            data[count].btns.apply {
                 btns = arrayOf(b1, b2, b3, b4)
             }
             setBundle()
         }
+        count--
     }
 
     private fun setBundle(){
         val bundle = Bundle()
-        bundle.putString("quest", data[10 - count].question)
+        bundle.putString("quest", data[count].question)
 
         questFragObj = Question()
         questFragObj.arguments = bundle
 
         val bundle1 = Bundle().apply {
             putStringArray("solution", btns)
-            putInt("key", data[10 - count].key)
+            putInt("key", data[count].key)
         }
 
         soluFragObj = Solution()
