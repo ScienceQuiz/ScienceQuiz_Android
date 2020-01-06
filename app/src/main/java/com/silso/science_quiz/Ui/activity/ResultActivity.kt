@@ -41,7 +41,7 @@ class ResultActivity : AppCompatActivity() {
     private fun setImage() {
         resultImg.image = when {
             score >= count * 75 -> getDrawable(R.drawable.result_happy_face)
-            score >= count * 40 -> getDrawable(R.drawable.result_ok_face)
+            score >= count * 55 -> getDrawable(R.drawable.result_ok_face)
             else -> getDrawable(R.drawable.result_sad_face)
         }
     }

@@ -4,7 +4,6 @@ import com.silso.science_quiz.data.GetQusetion
 import com.silso.science_quiz.model.GetNick
 import com.silso.science_quiz.model.SignIn
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 interface NetRetrofit {
@@ -21,5 +20,5 @@ interface NetRetrofit {
     fun getNick(@Header("Authorization") token:String):Call<GetNick>
 
     @GET("/api/quiz")
-    suspend fun getScience(): Response<GetQusetion>
+    fun getScience(): Call<GetQusetion>
 }

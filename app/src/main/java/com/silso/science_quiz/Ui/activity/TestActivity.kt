@@ -8,16 +8,22 @@ import com.google.android.material.snackbar.Snackbar
 import com.silso.science_quiz.R
 import com.silso.science_quiz.Ui.fragment.Question
 import com.silso.science_quiz.Ui.fragment.Solution
+import com.silso.science_quiz.data.GetQusetion
 import com.silso.science_quiz.data.Science
+import com.silso.science_quiz.model.SignIn
 import com.silso.science_quiz.server.Retrofit
 import com.silso.science_quiz.util.SendAnswer
+import com.silso.science_quiz.util.UtilClass
 import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.HttpException
+import retrofit2.Response
 
 class TestActivity : AppCompatActivity(), SendAnswer {
     private lateinit var questFragObj: Question
@@ -31,23 +37,18 @@ class TestActivity : AppCompatActivity(), SendAnswer {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
-        GlobalScope.launch(Dispatchers.IO) {
-            try {
-                val res = Retrofit().service.getScience()
-                Log.d("retrofit", res.code().toString())
-                Log.e("retrofit", res.message())
-                Log.e("retrofit", res.isSuccessful.toString())
-                Log.e("retrofit", res.body().toString())
-                if (res.isSuccessful) {
-                    data = res.body()!!.science
-                    turningTest()
-                }
-            }catch (e: HttpException) {
-                toast("Exception ${e.message}")
-            } catch (e: Throwable) {
-                toast("Ooops: Something else went wrong")
+        val call: Call<GetQusetion> = Retrofit().service.getScience()
+
+        call.enqueue(object : Callback<GetQusetion> {
+            override fun onFailure(call: Call<GetQusetion>, t: Throwable) {
+                Log.e("ddd", t.message.toString())
             }
-        }
+
+            override fun onResponse(call: Call<GetQusetion>, response: Response<GetQusetion>) {
+                data = response.body()?.science!!
+                turningTest()
+            }
+        })
     }
 
     //받은 데이터로 문제 표시
