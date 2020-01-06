@@ -24,7 +24,7 @@ class TestActivity : AppCompatActivity(), SendAnswer {
     private lateinit var soluFragObj: Solution
     private lateinit var data: Array<Science>
     private lateinit var btns: Array<String>
-    private var count = 10
+    private var count = 9
     private var correct = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class TestActivity : AppCompatActivity(), SendAnswer {
     //받은 데이터로 문제 표시
     private fun turningTest(){
         Log.e("count", count.toString())
-        if(count == 1){
+        if(count == -1){
             startActivity<ResultActivity>(
                 "correct" to correct,
                 "count" to 10
@@ -61,25 +61,25 @@ class TestActivity : AppCompatActivity(), SendAnswer {
             finish()
         }else {
             corrctCount.text = correct.toString()
-            wrongCount.text = (10 - count - correct).toString()
-            count--
-            data[10 - count].btns.apply {
+            wrongCount.text = (10 - count - correct - 1).toString()
+            data[count].btns.apply {
                 btns = arrayOf(b1, b2, b3, b4)
             }
             setBundle()
         }
+        count--
     }
 
     private fun setBundle(){
         val bundle = Bundle()
-        bundle.putString("quest", data[10 - count].question)
+        bundle.putString("quest", data[count].question)
 
         questFragObj = Question()
         questFragObj.arguments = bundle
 
         val bundle1 = Bundle().apply {
             putStringArray("solution", btns)
-            putInt("key", data[10 - count].key)
+            putInt("key", data[count].key)
         }
 
         soluFragObj = Solution()
