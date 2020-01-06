@@ -11,6 +11,7 @@ import com.silso.science_quiz.Ui.fragment.Solution
 import com.silso.science_quiz.data.Science
 import com.silso.science_quiz.server.Retrofit
 import com.silso.science_quiz.util.SendAnswer
+import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -59,6 +60,8 @@ class TestActivity : AppCompatActivity(), SendAnswer {
             )
             finish()
         }else {
+            corrctCount.text = correct.toString()
+            wrongCount.text = (10 - count - correct).toString()
             count--
             data[10 - count].btns.apply {
                 btns = arrayOf(b1, b2, b3, b4)
